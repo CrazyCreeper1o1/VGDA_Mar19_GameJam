@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform groundCheck;
     private PlayerBehaviour.States currentState;
     private bool flinchLeft;
-    private Vector2 flinchPower = new Vector2(5, 1);
+    private Vector2 flinchPower = new Vector2(20, 10);
     private int flinchTime = 0;
 
     private void Awake()
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = GetComponent<PlayerBehaviour>().currentState;
         //to-do make sure colliders are for solid objects
 
-        if (currentState != PlayerBehaviour.States.flinching)
+        if (currentState != PlayerBehaviour.States.flinching && currentState != PlayerBehaviour.States.dying)
         {
             AirborneOrIdle();
             if (GameInput.Left())
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
                     Move(null, JumpPower);
             }
         }
-        else
+        else if (currentState == PlayerBehaviour.States.flinching)
             Flinch();
     }
 
@@ -75,12 +75,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void BeginFlinch(bool left)
     {
-        if (!playerBehaviour.FlinchInvincibility)
+        if (!playerBehaviour.FlinchInvincibility && playerBehaviour.currentState != PlayerBehaviour.States.dying)
         {
             flinchLeft = left;
             playerBehaviour.currentState = PlayerBehaviour.States.flinching;
             playerBehaviour.FlinchInvincibility = true;
-            flinchTime = 10;
+            flinchTime = 3;
         }
     }
 
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerRigidbody.velocity = new Vector2(flinchPower.x * (flinchLeft ? -1 : 1), flinchPower.y);
             flinchTime--;
         }
-        else 
+        else
             AirborneOrIdle();
     }
 
