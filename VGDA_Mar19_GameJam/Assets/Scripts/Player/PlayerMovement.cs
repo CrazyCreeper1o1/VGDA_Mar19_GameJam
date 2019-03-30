@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        PlayerRigidbody = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
     }
 
@@ -70,6 +71,4 @@ public class PlayerMovement : MonoBehaviour
         float newY = y == null ? PlayerRigidbody.velocity.y : (float)y * Time.deltaTime * 10;
         PlayerRigidbody.velocity = new Vector2(newX, newY);
     }
-
-
 }
