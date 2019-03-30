@@ -8,6 +8,10 @@ public class Turret : Tower
     public int damage;
     private float shotTimer;
     private Targeter targeter;
+    public float slowedSpeed;
+    public float slowTime;
+
+
 
     public LayerMask checkMask;
 
@@ -37,6 +41,7 @@ public class Turret : Tower
                     {
                         //Debug.Log("HIT THE BOY.");
                         hit.rigidbody.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                        hit.rigidbody.gameObject.GetComponent<EnemyMovement>().SetSlow(slowedSpeed, slowTime);
                         shotTimer = 0;
                         Transform barrel = gameObject.GetComponentInChildren<Transform>();
                         //barrel.transform.rotation.z = (Mathf.Atan2(target.transform.position.y - gameObject.GetComponent<Transform>().position.y, target.transform.position.x - gameObject.GetComponent<Transform>().position.x));

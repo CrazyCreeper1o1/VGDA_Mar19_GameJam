@@ -39,6 +39,11 @@ public class Enemy : MonoBehaviour
     {
         HP -= dam;
     }
+    public void TakeSlow(float mult, float length)
+    {
+        this.gameObject.GetComponent<EnemyMovement>().SetSlow(mult, length);
+    }
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {
