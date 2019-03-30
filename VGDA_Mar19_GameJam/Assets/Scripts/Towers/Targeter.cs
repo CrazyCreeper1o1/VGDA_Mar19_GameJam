@@ -69,11 +69,11 @@ public class Targeter : MonoBehaviour
                 return best;
 
             case States.hp:
-                value = best.hp;
+                value = best.HP;
                 for (int i = 1; i < size; i++)
                 {
                     Enemy temp = EnemyList[i];
-                    int tempValue = temp.hp;
+                    int tempValue = temp.HP;
                     if (tempValue >= value)
                     {
                         index = i;

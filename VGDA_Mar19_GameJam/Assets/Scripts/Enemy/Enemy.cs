@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHP = 10;
-    public int hp;
+    private int hp = 10;
+    public int HP
+    {
+        get { return hp; }
+        set
+        {
+            if (value <= 0)
+                Die();
+            else
+                hp = value;
+        }
+    }
+    public int maxHP;
     public int threat;
     public int power = 1;
 
     public Transform target;
+    public GameObject item;
     private GameObject player;
 
     private void Awake()
@@ -18,22 +30,14 @@ public class Enemy : MonoBehaviour
         target = player.transform;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        hp = maxHP;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (hp <= 0)
-            GameObject.Destroy(this.gameObject);
+        HP = maxHP;
     }
 
     public void TakeDamage(int dam)
     {
-        hp -= dam;
+        HP -= dam;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -44,5 +48,15 @@ public class Enemy : MonoBehaviour
             obj.GetComponent<PlayerBehaviour>().TakeDamage(power);
             obj.GetComponent<PlayerMovement>().BeginFlinch(transform.position.x > player.transform.position.x);
         }
+    }
+
+    private void Die()
+    {
+        if (Random.Range(0, 3) != 0)
+        {
+            item.transform.position = transform.position;
+            Instantiate(item);
+        }
+        Destroy(gameObject);
     }
 }
