@@ -19,4 +19,9 @@ public static class GameInput
     {
         return Input.GetButtonDown("Jump");
     }
+
+    public static bool Pause()
+    {
+        return Input.GetButtonDown("Pause");
+    }
 }

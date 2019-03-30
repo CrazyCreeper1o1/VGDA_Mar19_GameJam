@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
         get { return hp; }
         set
         {
-            GameObject.Find("HPLabel").GetComponent<HealthDisplay>().healthText.text = "Health: " + value;
+            GameObject.Find("PlayerHPLabel").GetComponent<HealthDisplay>().healthText.text = "Health: " + value;
             hp = value;
         }
     }
@@ -30,9 +30,13 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private int flinchInvincibilityTime = 0;
 
+    private GameObject pausePanel;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        pausePanel = GameObject.Find("PausePanel");
+        pausePanel.SetActive(false);
     }
 
     void Start()
@@ -42,6 +46,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (GameInput.Pause())
+        {
+            if (Global.Paused)
+            {
+                Time.timeScale = 1;
+                pausePanel.SetActive(false);
+                Global.Paused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                pausePanel.SetActive(true);
+                Global.Paused = true;
+            }
+        }
+
         switch (currentState)
         {
             case States.dying:
@@ -69,12 +89,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        if (!flinchInvincibility && currentState != States.dying)
-        {
-            HP -= dmg;
-            if (HP <= 0)
-                currentState = States.dying;
-        }
+        //if (!flinchInvincibility && currentState != States.dying)
+        //{
+        //    HP -= dmg;
+        //    if (HP <= 0)
+        //        currentState = States.dying;
+        //}
     }
 
     private void Die()
