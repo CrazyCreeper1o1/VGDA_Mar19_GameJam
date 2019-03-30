@@ -37,7 +37,7 @@ public class Targeter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public Enemy getBestTarget()
@@ -88,7 +88,7 @@ public class Targeter : MonoBehaviour
                 return null;
         }
     }
-    
+
 
 
 
@@ -101,12 +101,12 @@ public class Targeter : MonoBehaviour
         targetSystem = States.hp;
     }
 
-    
+
     public void setStateClosest()
     {
         //targetSystem = States.closest;
     }
-    
+
 
 
 }

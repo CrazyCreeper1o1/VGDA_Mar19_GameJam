@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Rigidbody2D EnemyRigidbody;
     public float speed = 1;
     private GameObject protectedCore;
     public float speedMultiplier = 1f;
 
     private Transform target;
+    private Rigidbody2D thisRigidbody;
 
     private void Awake()
     {
-        EnemyRigidbody = GetComponent<Rigidbody2D>();
         target = GetComponent<Enemy>().target;
+        thisRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -32,8 +32,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move(float? x, float? y)
     {
-        float newX = x == null ? EnemyRigidbody.velocity.x : (float)x;
-        float newY = y == null ? EnemyRigidbody.velocity.y : (float)y;
-        EnemyRigidbody.velocity = new Vector2(newX, newY);
+        float newX = x == null ? thisRigidbody.velocity.x : (float)x;
+        float newY = y == null ? thisRigidbody.velocity.y : (float)y;
+        thisRigidbody.velocity = new Vector3(newX, newY, 0);
     }
 }
