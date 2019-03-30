@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D PlayerRigidbody;
     public float Speed = 15;
     public float JumpPower = 30;
+    public Animator anim;
 
     private PlayerBehaviour playerBehaviour;
     private Transform groundCheck;
@@ -40,18 +41,22 @@ public class PlayerMovement : MonoBehaviour
                 if (currentState != PlayerBehaviour.States.airborne)
                     currentState = PlayerBehaviour.States.walking;
                 Move(-Speed, null);
+                anim.SetBool("Moving", true);
             }
             else if (GameInput.Right())
             {
                 if (currentState != PlayerBehaviour.States.airborne)
                     currentState = PlayerBehaviour.States.walking;
                 Move(Speed, null);
+                anim.SetBool("Moving", true);
             }
             else
             {
                 if (currentState != PlayerBehaviour.States.airborne)
                     currentState = PlayerBehaviour.States.idle;
                 PlayerRigidbody.velocity = new Vector2(0, PlayerRigidbody.velocity.y);
+
+                anim.SetBool("Moving", false);
             }
             if (GameInput.Jump())
             {

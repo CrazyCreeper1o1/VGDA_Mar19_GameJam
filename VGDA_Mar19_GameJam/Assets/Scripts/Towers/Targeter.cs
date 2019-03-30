@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Targeter : MonoBehaviour
 {
-    List<Enemy> EnemyList = new List<Enemy>();
+    public List<Enemy> EnemyList = new List<Enemy>();
 
     enum States { threat, hp, closest }
     States targetSystem = States.threat;
@@ -18,6 +18,8 @@ public class Targeter : MonoBehaviour
     {
         EnemyList.Remove(collision.gameObject.GetComponent<Enemy>());
     }
+
+    
 
     public void Ignore(Enemy target)
     {
