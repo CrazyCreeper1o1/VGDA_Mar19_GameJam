@@ -67,8 +67,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move(float? x, float? y)
     {
-        float newX = x == null ? PlayerRigidbody.velocity.x : (float)x * Time.deltaTime * 10;
-        float newY = y == null ? PlayerRigidbody.velocity.y : (float)y * Time.deltaTime * 10;
+        float newX = x == null ? PlayerRigidbody.velocity.x : (float)x;
+        float newY = y == null ? PlayerRigidbody.velocity.y : (float)y;
         PlayerRigidbody.velocity = new Vector2(newX, newY);
     }
 }
