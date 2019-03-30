@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7692042530354768281}
   - component: {fileID: 7692042530354768287}
   - component: {fileID: 7692042530354768284}
+  - component: {fileID: 4261065186068656851}
   m_Layer: 8
   m_Name: Drone
   m_TagString: Enemy
@@ -141,6 +142,27 @@ MonoBehaviour:
   target: {fileID: 0}
   itemPrefab: {fileID: 2495391218326379262, guid: 0bb48d838acf95b4cbcbd510b193d004,
     type: 3}
+--- !u!50 &4261065186068656851
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692042530354768285}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &8222035017758361838
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8052943234406397652}
   - component: {fileID: 7157962064049020903}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

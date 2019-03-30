@@ -89,12 +89,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        //if (!flinchInvincibility && currentState != States.dying)
-        //{
-        //    HP -= dmg;
-        //    if (HP <= 0)
-        //        currentState = States.dying;
-        //}
+        if (!flinchInvincibility && currentState != States.dying)
+        {
+            HP -= dmg;
+            if (HP <= 0)
+                currentState = States.dying;
+        }
     }
 
     private void Die()

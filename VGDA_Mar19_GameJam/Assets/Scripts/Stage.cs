@@ -15,6 +15,7 @@ public class Stage : MonoBehaviour
         enemySpawnTimer = Random.Range(0, 500);
         itemSpawnTimer = Random.Range(0, 500);
         enemy1Prefab.GetComponent<Enemy>().target = GameObject.Find("Player").transform;
+        enemy2Prefab.GetComponent<Enemy>().target = GameObject.Find("Player").transform;
     }
 
     void Update()
@@ -38,7 +39,12 @@ public class Stage : MonoBehaviour
 
     void AddEnemy()
     {
-        GameObject enemy = Instantiate(enemy1Prefab);
+        bool one = Random.Range(0, 2) == 0;
+        GameObject enemy;
+        if (one)
+            enemy = Instantiate(enemy1Prefab);
+        else
+            enemy = Instantiate(enemy2Prefab);
         enemy.transform.position = new Vector3(Random.Range(-50, 50), Random.Range(-30, 60));
         enemy.transform.parent = transform;
     }
