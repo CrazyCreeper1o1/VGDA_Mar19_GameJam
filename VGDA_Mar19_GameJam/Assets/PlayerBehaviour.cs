@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider2D other)
     {
         if (other.gameObject.CompareTag("Item"))
         {
