@@ -139,12 +139,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 279623751635849289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2b620a5f03c2124fa35ab9bcf30aa92, type: 3}
+  m_Script: {fileID: 11500000, guid: 11ef04e797eac6348be1c66786a69c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRigidbody: {fileID: 2767260162096309324}
-  FeetCollider: {fileID: 0}
+  PlayerRigidbody: {fileID: 0}
   Speed: 30
+  JumpPower: 150
+  currentState: 2
 --- !u!1 &8596853682690130952
 GameObject:
   m_ObjectHideFlags: 0

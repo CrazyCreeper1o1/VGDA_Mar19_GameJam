@@ -7,26 +7,22 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody2D EnemyRigidbody;
     public Transform Target;
     public float speed = 1;
+    private GameObject player;
+    private GameObject protectedCore;
 
     private void Awake()
     {
         EnemyRigidbody = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     void Start()
     {
-        Target = GameObject.Find("Player").transform;
+        Target = player.transform;
     }
 
     void Update()
     {
-
-        //angle = MathExtra.Vector2ToDiamondAngle(this.Position.Y - target.Position.Y, this.Position.X - target.Position.X);
-
-        //Vector2 movement = MathExtra.DiamondAngleToVector2(angle);
-
-        //Move(-movement);
-
         float angle = MathExtra.Vector2ToDiamondAngle(transform.position.y - Target.transform.position.y, transform.position.x - Target.transform.position.x);
 
         Vector2 movement = MathExtra.DiamondAngleToVector2(angle);
@@ -39,5 +35,12 @@ public class EnemyMovement : MonoBehaviour
         float newX = x == null ? EnemyRigidbody.velocity.x : (float)x * Time.deltaTime * 10;
         float newY = y == null ? EnemyRigidbody.velocity.y : (float)y * Time.deltaTime * 10;
         EnemyRigidbody.velocity = new Vector2(newX, newY);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == player)
+            // to-do damage amount variable
+            player.GetComponent<PlayerBehaviour>().TakeDamage(1);
     }
 }
