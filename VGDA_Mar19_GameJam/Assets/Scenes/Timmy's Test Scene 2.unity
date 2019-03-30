@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 618509139}
   - component: {fileID: 618509141}
   m_Layer: 5
-  m_Name: Text
+  m_Name: HPLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dc19a645d77457aa81c7e9fb7f4c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
   currentState: 2
 --- !u!114 &1979150740
 MonoBehaviour:

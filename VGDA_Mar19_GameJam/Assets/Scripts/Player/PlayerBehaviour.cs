@@ -4,7 +4,16 @@ using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public int HP = 10;
+    private int hp = 10;
+    public int HP
+    {
+        get { return hp; }
+        set
+        {
+            GameObject.Find("HPLabel").GetComponent<HealthDisplay>().healthText.text = "Health: " + value;
+            hp = value;
+        }
+    }
     private PlayerMovement playerMovement;
     public enum States { idle, walking, airborne, flinching, dying }
     public States currentState = States.airborne;

@@ -7,25 +7,23 @@ public class HealthDisplay : MonoBehaviour
 {
     private GameObject player;
     public int hp;
-    public Text healthText; 
+    public Text healthText;
 
     private void Awake()
     {
 
         player = GameObject.Find("Player");
-        hp = player.GetComponent<PlayerBehaviour> ().HP;
-        
+        hp = player.GetComponent<PlayerBehaviour>().HP;
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthText.text = "Health: " + hp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "HEALTH: " + hp;
-
     }
 }
