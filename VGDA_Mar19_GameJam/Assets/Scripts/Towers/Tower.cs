@@ -17,8 +17,9 @@ public abstract class Tower : MonoBehaviour
     }
 
 
-    public abstract int getMetalCost();
-    public abstract int getCircuitCost();
-    public abstract int getGearCost();
+    public abstract int GetMetalCost();
+    public abstract int GetCircuitCost();
+    public abstract int GetGearCost();
+    public abstract void Scrap();
     
 }

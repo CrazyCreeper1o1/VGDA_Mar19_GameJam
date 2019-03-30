@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Rigidbody2D EnemyRigidbody;
-    public Transform Target;
+    public Transform target;
     public float speed = 1;
     private GameObject player;
     private GameObject protectedCore;
@@ -18,12 +18,12 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        Target = player.transform;
+        target = player.transform;
     }
 
     void Update()
     {
-        float angle = MathExtra.Vector2ToDiamondAngle(transform.position.y - Target.transform.position.y, transform.position.x - Target.transform.position.x);
+        float angle = MathExtra.Vector2ToDiamondAngle(transform.position.y - target.transform.position.y, transform.position.x - target.transform.position.x);
 
         Vector2 movement = MathExtra.DiamondAngleToVector2(angle);
 

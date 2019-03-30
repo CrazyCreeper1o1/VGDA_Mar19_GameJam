@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Targeter : MonoBehaviour
 {
-    List<Enemy> EnemyList;
+    List<Enemy> EnemyList = new List<Enemy>();
 
     enum States { threat, hp, closest }
     States targetSystem = States.threat;
@@ -25,7 +25,7 @@ public class Targeter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        setStateHP();
     }
 
     // Update is called once per frame
@@ -36,14 +36,20 @@ public class Targeter : MonoBehaviour
 
     public Enemy getBestTarget()
     {
+        if (EnemyList.Count == 0)
+            return null;
+        int size = EnemyList.Count;
+        Debug.Log("Wow! Someone's there!");
         Enemy best = EnemyList[0];
+        if (size == 1)
+            return best;
         int index = 0;
         int value;
         switch (targetSystem)
         {
             case States.threat:
                 value = best.threat;
-                for (int i = 1; i < EnemyList.Count; i++)
+                for (int i = 1; i < size; i++)
                 {
                     Enemy temp = EnemyList[i];
                     int tempValue = temp.threat;
@@ -58,7 +64,7 @@ public class Targeter : MonoBehaviour
 
             case States.hp:
                 value = best.hp;
-                for (int i = 1; i < EnemyList.Count; i++)
+                for (int i = 1; i < size; i++)
                 {
                     Enemy temp = EnemyList[i];
                     int tempValue = temp.hp;
@@ -88,11 +94,13 @@ public class Targeter : MonoBehaviour
     {
         targetSystem = States.hp;
     }
+
+    
     public void setStateClosest()
     {
-        targetSystem = States.closest;
+        //targetSystem = States.closest;
     }
-
+    
 
 
 }
