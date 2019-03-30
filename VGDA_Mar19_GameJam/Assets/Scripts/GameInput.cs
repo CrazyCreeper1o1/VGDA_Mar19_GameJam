@@ -14,4 +14,9 @@ public static class GameInput
     {
         return Input.GetAxisRaw("Horizontal") > 0;
     }
+
+    public static bool Jump()
+    {
+        return Input.GetButtonDown("Jump");
+    }
 }
