@@ -7,13 +7,17 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D PlayerRigidbody;
     public float Speed = 15;
     public float JumpPower = 30;
-    public enum States { idle, walking, airborne, flinching, dying }
-    public States currentState = States.airborne;
 
+    private PlayerBehaviour playerBehaviour;
     private Transform groundCheck;
+    private PlayerBehaviour.States currentState;
+    private bool flinchLeft;
+    private Vector2 flinchPower = new Vector2(5, 1);
+    private int flinchTime = 0;
 
     private void Awake()
     {
+        playerBehaviour = GetComponent<PlayerBehaviour>();
         PlayerRigidbody = GetComponent<Rigidbody2D>();
         groundCheck = transform.Find("GroundCheck");
     }
@@ -25,44 +29,70 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        currentState = GetComponent<PlayerBehaviour>().currentState;
         //to-do make sure colliders are for solid objects
+
+        if (currentState != PlayerBehaviour.States.flinching)
+        {
+            AirborneOrIdle();
+            if (GameInput.Left())
+            {
+                if (currentState != PlayerBehaviour.States.airborne)
+                    currentState = PlayerBehaviour.States.walking;
+                Move(-Speed, null);
+            }
+            else if (GameInput.Right())
+            {
+                if (currentState != PlayerBehaviour.States.airborne)
+                    currentState = PlayerBehaviour.States.walking;
+                Move(Speed, null);
+            }
+            else
+            {
+                if (currentState != PlayerBehaviour.States.airborne)
+                    currentState = PlayerBehaviour.States.idle;
+                PlayerRigidbody.velocity = new Vector2(0, PlayerRigidbody.velocity.y);
+            }
+            if (GameInput.Jump())
+            {
+                if (currentState != PlayerBehaviour.States.airborne)
+                    Move(null, JumpPower);
+            }
+        }
+        else
+            Flinch();
+    }
+
+    private void AirborneOrIdle()
+    {
         RaycastHit2D hit2D = Physics2D.Raycast(groundCheck.position, Vector2.down, .1f);
         Collider2D objectAtFeet = hit2D.collider;
-
         if (objectAtFeet == null)
-            currentState = States.airborne;
+            playerBehaviour.currentState = PlayerBehaviour.States.airborne;
         else
-            currentState = States.idle;
+            playerBehaviour.currentState = PlayerBehaviour.States.idle;
+    }
 
-        if (GameInput.Left())
+    public void BeginFlinch(bool left)
+    {
+        if (!playerBehaviour.FlinchInvincibility)
         {
-            if (currentState != States.airborne)
-                currentState = States.walking;
-            Move(-Speed, null);
+            flinchLeft = left;
+            playerBehaviour.currentState = PlayerBehaviour.States.flinching;
+            playerBehaviour.FlinchInvincibility = true;
+            flinchTime = 10;
         }
-        else if (GameInput.Right())
-        {
-            if (currentState != States.airborne)
-                currentState = States.walking;
-            Move(Speed, null);
-        }
-        else
-        {
-            if (currentState != States.airborne)
-                currentState = States.idle;
-            PlayerRigidbody.velocity = new Vector2(0, PlayerRigidbody.velocity.y);
-        }
-        if (GameInput.Jump())
-        {
-            if (currentState != States.airborne)
-                Move(null, JumpPower);
-        }
+    }
 
-        switch (currentState)
+    private void Flinch()
+    {
+        if (flinchTime > 0)
         {
-
+            PlayerRigidbody.velocity = new Vector2(flinchPower.x * (flinchLeft ? -1 : 1), flinchPower.y);
+            flinchTime--;
         }
-
+        else 
+            AirborneOrIdle();
     }
 
     private void Move(float? x, float? y)

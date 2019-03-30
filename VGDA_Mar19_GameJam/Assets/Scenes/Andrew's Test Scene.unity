@@ -138,7 +138,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176890220}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c253794023c52a5488a324f8c8e43b9c, type: 3}
   m_Name: 
@@ -516,9 +516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28844f7c3cfdfc41bcc4b3f36ea11ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
   maxHP: 5
+  hp: 0
   threat: 10
+  power: 1
+  target: {fileID: 0}
 --- !u!114 &1297430618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyRigidbody: {fileID: 1297430619}
-  target: {fileID: 0}
   speed: 2
   speedMultiplier: 1
 --- !u!50 &1297430619
@@ -795,9 +796,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28844f7c3cfdfc41bcc4b3f36ea11ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
   maxHP: 10
+  hp: 0
   threat: 5
+  power: 1
+  target: {fileID: 0}
 --- !u!114 &1380576715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyRigidbody: {fileID: 0}
-  target: {fileID: 0}
   speed: 1
   speedMultiplier: 1
 --- !u!50 &1380576716
@@ -948,7 +950,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439253273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 960da92419b7a1a4783946bed108fb49, type: 3}
   m_Name: 
@@ -1091,7 +1093,6 @@ MonoBehaviour:
   PlayerRigidbody: {fileID: 0}
   Speed: 15
   JumpPower: 30
-  currentState: 2
 --- !u!61 &1537556906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1197,6 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
+  currentState: 2
 --- !u!1 &1586112507
 GameObject:
   m_ObjectHideFlags: 0
