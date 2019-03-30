@@ -18,11 +18,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - EnemyCheck
+  - PlayerCheck
+  - Turret
   - 
   - 
   - 
