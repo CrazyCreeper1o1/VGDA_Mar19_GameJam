@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D PlayerRigidbody;
-    public float Speed = 30;
-    public float JumpPower = 150;
+    public float Speed = 15;
+    public float JumpPower = 30;
     public enum States { idle, walking, airborne, flinching, dying }
     public States currentState = States.airborne;
 
