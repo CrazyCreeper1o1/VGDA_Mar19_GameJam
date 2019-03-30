@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D PlayerRigidbody;
-    public BoxCollider2D FeetCollider;
     public float Speed = 30;
-    public float JumpPower = 10;
+    public float JumpPower = 150;
     enum States { idle, walking, airborne, flinching, dying }
     States currentState = States.airborne;
 

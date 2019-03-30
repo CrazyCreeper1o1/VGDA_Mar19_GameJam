@@ -744,6 +744,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2767260162096309324 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2767260162096309324, guid: 002333d7990888d4a88e752778311d15,
+    type: 3}
+  m_PrefabInstance: {fileID: 4906741521977192131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4906741521977192131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,5 +822,15 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6770580191246800983, guid: 002333d7990888d4a88e752778311d15,
+        type: 3}
+      propertyPath: JumpPower
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770580191246800983, guid: 002333d7990888d4a88e752778311d15,
+        type: 3}
+      propertyPath: PlayerRigidbody
+      value: 
+      objectReference: {fileID: 2767260162096309324}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 002333d7990888d4a88e752778311d15, type: 3}
