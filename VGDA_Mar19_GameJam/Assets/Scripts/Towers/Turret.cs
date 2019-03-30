@@ -4,27 +4,54 @@ using UnityEngine;
 
 public class Turret : Tower
 {
-    private static double cooldown;
+    public float cooldown;
+    public int damage;
     private float shotTimer;
     private Targeter targeter;
 
+    public LayerMask checkMask;
 
     // Start is called before the first frame update
     void Start()
     {
         targeter = this.GetComponentInChildren<Targeter>();
+        shotTimer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Enemy target = targeter.getBestTarget();
-        if (target)
-            target.TakeDamage(999);
+        {
+            Enemy target = targeter.getBestTarget();
+            if (target)
+            {
+                shotTimer += Time.deltaTime;
+                if(shotTimer >= cooldown)
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, 8f, checkMask.value);
+                    if(hit.rigidbody != null && hit.rigidbody.gameObject.tag == "Enemy")
+                    {
+                        Debug.Log("HIT THE BOY.");
+                        target.TakeDamage(damage);
+                        shotTimer = 0;
+                    }
+                    else
+                    {
+                        if(hit.rigidbody != null)
+                        {
+                            Debug.Log("Hit.. " + hit.rigidbody.gameObject.name);
+                        }
+                        else
+                            Debug.Log("HIT COLLIDER " + hit.collider.gameObject.name);
+
+                    }
+                }
+            }
+        }
     }
 
     override public int GetMetalCost() { return 5; }
-    override public int GetCircuitCost() { return 5; }
+    override public int GetCircuitBoardCost() { return 5; }
     override public int GetGearCost() { return 0; }
     override public void Scrap() { GameObject.Destroy(this.gameObject); }
 
