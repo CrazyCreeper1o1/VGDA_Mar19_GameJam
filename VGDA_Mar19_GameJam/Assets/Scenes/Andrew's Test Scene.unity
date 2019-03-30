@@ -533,7 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyRigidbody: {fileID: 1297430619}
   target: {fileID: 0}
-  speed: 5
+  speed: 2
   speedMultiplier: 1
 --- !u!50 &1297430619
 Rigidbody2D:
@@ -810,9 +810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e49072f39c118448a6333b514d58c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyRigidbody: {fileID: 1380576716}
+  EnemyRigidbody: {fileID: 0}
   target: {fileID: 0}
-  speed: 10
+  speed: 1
   speedMultiplier: 1
 --- !u!50 &1380576716
 Rigidbody2D:

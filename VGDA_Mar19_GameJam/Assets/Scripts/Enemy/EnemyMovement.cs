@@ -33,8 +33,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move(float? x, float? y)
     {
-        float newX = x == null ? EnemyRigidbody.velocity.x : (float)x * Time.deltaTime * 10;
-        float newY = y == null ? EnemyRigidbody.velocity.y : (float)y * Time.deltaTime * 10;
+        float newX = x == null ? EnemyRigidbody.velocity.x : (float)x;
+        float newY = y == null ? EnemyRigidbody.velocity.y : (float)y;
         EnemyRigidbody.velocity = new Vector2(newX, newY);
     }
 
