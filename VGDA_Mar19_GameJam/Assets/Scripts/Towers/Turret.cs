@@ -39,16 +39,6 @@ public class Turret : Tower
                         hit.rigidbody.gameObject.GetComponent<Enemy>().TakeDamage(damage);
                         shotTimer = 0;
                     }
-                    else
-                    {
-                        if(hit.rigidbody != null)
-                        {
-                            //Debug.Log("Hit.. " + hit.rigidbody.gameObject.name);
-                        }
-                        else
-                            //Debug.Log("HIT COLLIDER " + hit.collider.gameObject.name);
-
-                    }
                 }
             }
         }
