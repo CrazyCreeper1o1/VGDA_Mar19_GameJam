@@ -361,7 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dc19a645d77457aa81c7e9fb7f4c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   HP: 10
+=======
+>>>>>>> b8320851798759518c65e2a28b8f51f468cc92e7
   currentState: 2
 --- !u!114 &377025844
 MonoBehaviour:
@@ -749,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1452835332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +897,11 @@ MonoBehaviour:
   hp: 0
   threat: 5
   power: 1
+<<<<<<< HEAD
   target: {fileID: 377025848}
+=======
+  target: {fileID: 0}
+>>>>>>> b8320851798759518c65e2a28b8f51f468cc92e7
 --- !u!114 &1482859300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1064,11 @@ MonoBehaviour:
   hp: 0
   threat: 10
   power: 1
+<<<<<<< HEAD
   target: {fileID: 377025848}
+=======
+  target: {fileID: 0}
+>>>>>>> b8320851798759518c65e2a28b8f51f468cc92e7
 --- !u!114 &1576472639
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public int HP = 10;
+    private int hp = 10;
+    public int HP
+    {
+        get { return hp; }
+        set
+        {
+            GameObject.Find("PlayerHPLabel").GetComponent<HealthDisplay>().healthText.text = "Health: " + value;
+            hp = value;
+        }
+    }
     private PlayerMovement playerMovement;
     public enum States { idle, walking, airborne, flinching, dying }
     public States currentState = States.airborne;
@@ -20,9 +30,13 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private int flinchInvincibilityTime = 0;
 
+    private GameObject pausePanel;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        pausePanel = GameObject.Find("PausePanel");
+        pausePanel.SetActive(false);
     }
 
     void Start()
@@ -32,6 +46,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (GameInput.Pause())
+        {
+            if (Global.Paused)
+            {
+                Time.timeScale = 1;
+                pausePanel.SetActive(false);
+                Global.Paused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                pausePanel.SetActive(true);
+                Global.Paused = true;
+            }
+        }
+
         switch (currentState)
         {
             case States.dying:
@@ -59,21 +89,19 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        if (!flinchInvincibility)
-        {
-            HP -= dmg;
-            if (HP <= 0)
-                currentState = States.dying;
-        }
+        //if (!flinchInvincibility && currentState != States.dying)
+        //{
+        //    HP -= dmg;
+        //    if (HP <= 0)
+        //        currentState = States.dying;
+        //}
     }
 
     private void Die()
     {
-        int time = 10000;
-        while (time > 0)
-        {
-            time--;
-            transform.localScale -= new Vector3(0, 0.00001f, 0);
-        }
+        if (transform.localScale.y > 0)
+            transform.localScale -= new Vector3(0, 0.1f, 0);
+        else
+            SceneManager.LoadScene("GameOver");
     }
 }
