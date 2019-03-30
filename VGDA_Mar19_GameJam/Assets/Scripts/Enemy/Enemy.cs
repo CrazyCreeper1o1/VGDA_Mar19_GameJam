@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public int power = 1;
 
     public Transform target;
-    public GameObject item;
+    public GameObject itemPrefab;
     private GameObject player;
 
     private void Awake()
@@ -54,8 +54,9 @@ public class Enemy : MonoBehaviour
     {
         if (Random.Range(0, 3) != 0)
         {
+            GameObject item = Instantiate(itemPrefab);
             item.transform.position = transform.position;
-            Instantiate(item);
+            item.transform.parent = transform.parent;
         }
         Destroy(gameObject);
     }
