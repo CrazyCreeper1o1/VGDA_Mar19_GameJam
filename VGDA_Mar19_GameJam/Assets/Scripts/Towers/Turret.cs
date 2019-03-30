@@ -36,7 +36,7 @@ public class Turret : Tower
                     if(hit.rigidbody != null && hit.rigidbody.gameObject.tag == "Enemy")
                     {
                         Debug.Log("HIT THE BOY.");
-                        target.TakeDamage(damage);
+                        hit.rigidbody.gameObject.GetComponent<Enemy>().TakeDamage(damage);
                         shotTimer = 0;
                     }
                     else
