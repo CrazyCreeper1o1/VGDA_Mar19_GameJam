@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : Tower
+public class StaticTurret : Tower
 {
     public float cooldown;
     public int damage;
@@ -30,10 +30,10 @@ public class Turret : Tower
             if (target)
             {
                 shotTimer += Time.deltaTime;
-                if(shotTimer >= cooldown)
+                if (shotTimer >= cooldown)
                 {
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, 8f, checkMask.value);
-                    if(hit.rigidbody != null && hit.rigidbody.gameObject.tag == "Enemy")
+                    if (hit.rigidbody != null && hit.rigidbody.gameObject.tag == "Enemy")
                     {
                         //Debug.Log("HIT THE BOY.");
                         hit.rigidbody.gameObject.GetComponent<Enemy>().TakeDamage(damage);
@@ -41,7 +41,7 @@ public class Turret : Tower
                     }
                     else
                     {
-                        if(hit.rigidbody != null)
+                        if (hit.rigidbody != null)
                         {
                             //Debug.Log("Hit.. " + hit.rigidbody.gameObject.name);
                         }

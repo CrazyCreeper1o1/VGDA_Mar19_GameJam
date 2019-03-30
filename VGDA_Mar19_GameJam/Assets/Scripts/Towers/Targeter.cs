@@ -39,7 +39,7 @@ public class Targeter : MonoBehaviour
         if (EnemyList.Count == 0)
             return null;
         int size = EnemyList.Count;
-        Debug.Log("Wow! Someone's there!");
+        //Debug.Log("Wow! Someone's there!");
         Enemy best = EnemyList[0];
         if (size == 1)
             return best;

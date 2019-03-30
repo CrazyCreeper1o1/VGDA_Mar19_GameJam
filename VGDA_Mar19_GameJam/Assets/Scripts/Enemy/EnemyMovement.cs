@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 1;
     private GameObject player;
     private GameObject protectedCore;
+    public float speedMultiplier = 1f;
 
     private void Awake()
     {
