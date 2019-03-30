@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
 
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -23,13 +23,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (item)
             item.Collect();
 
-        Debug.Log("Hi");
-        /*
-        if (other.gameObject.tag == "Item")
-        {
-            GameObject.Destroy(other.gameObject);
-        }
-        */
     }
 
     public void TakeDamage(int dmg)
@@ -37,7 +30,19 @@ public class PlayerBehaviour : MonoBehaviour
         if (playerMovement.currentState != PlayerMovement.States.flinching)
         {
             HP -= dmg;
-            playerMovement.currentState = PlayerMovement.States.flinching;
+            if (HP > 0)
+                playerMovement.currentState = PlayerMovement.States.flinching;
+            else
+                Die();
+        }
+    }
+
+    private void Die()
+    {
+        int time = 10000;
+        while (time > 0)
+        {
+            transform.localScale -= new Vector3(0, 0.00001f, 0);
         }
     }
 }
