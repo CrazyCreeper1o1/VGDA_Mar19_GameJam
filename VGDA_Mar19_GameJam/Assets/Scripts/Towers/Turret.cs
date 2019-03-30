@@ -11,10 +11,14 @@ public class Turret : Tower
 
     public LayerMask checkMask;
 
+    private void Awake()
+    {
+        targeter = this.GetComponentInChildren<Targeter>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        targeter = this.GetComponentInChildren<Targeter>();
         shotTimer = 0f;
     }
 
