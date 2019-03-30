@@ -5,7 +5,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
-    public string test;
+    public int hp = 10;
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -34,5 +35,10 @@ public class PlayerBehaviour : MonoBehaviour
             GameObject.Destroy(other.gameObject);
         }
         */
+    }
+
+    public void TakeDamage(int dam)
+    {
+        hp -= dam;
     }
 }

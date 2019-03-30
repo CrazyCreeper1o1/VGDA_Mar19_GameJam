@@ -6,7 +6,7 @@ public class CoreScrpit : MonoBehaviour
 {
     
     public int hp = 100;
-    bool flinching = False;
+    //bool flinching = False;
     void Start()
     {
 
@@ -19,7 +19,7 @@ public class CoreScrpit : MonoBehaviour
     }
     public void Damage(int dmg)
     {
-        if (!flinching)
-            hp -= dmg:
+        //if (!flinching)
+            hp -= dmg;
     }
 }
