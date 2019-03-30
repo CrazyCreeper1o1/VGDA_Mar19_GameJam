@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Projectile
   - Item
+  - item
   layers:
   - Default
   - TransparentFX
@@ -18,12 +19,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - EnemyCheck
+  - PlayerCheck
+  - Turret
+  - Floor
   - 
   - 
   - 
