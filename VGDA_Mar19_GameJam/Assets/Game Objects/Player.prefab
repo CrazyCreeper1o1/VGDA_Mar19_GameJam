@@ -145,6 +145,10 @@ MonoBehaviour:
   PlayerRigidbody: {fileID: 0}
   Speed: 30
   JumpPower: 150
+<<<<<<< HEAD
+=======
+  currentState: 2
+>>>>>>> 02937eb0e83a26c729adb710bda608bb8a36f3ee
 --- !u!1 &8596853682690130952
 GameObject:
   m_ObjectHideFlags: 0

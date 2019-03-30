@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D PlayerRigidbody;
     public float Speed = 30;
     public float JumpPower = 150;
-    enum States { idle, walking, airborne, flinching, dying }
-    States currentState = States.airborne;
+    public enum States { idle, walking, airborne, flinching, dying }
+    public States currentState = States.airborne;
 
     private Transform groundCheck;
 
