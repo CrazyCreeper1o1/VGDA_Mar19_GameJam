@@ -15,13 +15,21 @@ public class PlayerBehaviour : MonoBehaviour
     {
 
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Item"))
+
+        Item item = other.gameObject.GetComponent<Item>();
+        if (item)
+            item.Collect();
+
+        Debug.Log("Hi");
+        /*
+        if (other.gameObject.tag == "Item")
         {
-            other.gameObject.SetActive(false);
+            GameObject.Destroy(other.gameObject);
         }
+        */
     }
 
     public void TakeDamage(int dmg)
