@@ -755,7 +755,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerRigidbody: {fileID: 610128142}
   Speed: 30
-  JumpPower: 160
+  JumpPower: 150
   currentState: 2
 --- !u!50 &610128142
 Rigidbody2D:
@@ -1352,13 +1352,18 @@ PrefabInstance:
     - target: {fileID: 6770580191246800983, guid: 002333d7990888d4a88e752778311d15,
         type: 3}
       propertyPath: JumpPower
-      value: 160
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6770580191246800983, guid: 002333d7990888d4a88e752778311d15,
         type: 3}
       propertyPath: PlayerRigidbody
       value: 
       objectReference: {fileID: 610128142}
+    - target: {fileID: 6770580191246800983, guid: 002333d7990888d4a88e752778311d15,
+        type: 3}
+      propertyPath: Speed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 002333d7990888d4a88e752778311d15, type: 3}
 --- !u!1 &1689064239
@@ -1372,7 +1377,7 @@ GameObject:
   - component: {fileID: 1689064242}
   - component: {fileID: 1689064241}
   - component: {fileID: 1689064240}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}

@@ -19,8 +19,14 @@ public class Targeter : MonoBehaviour
         EnemyList.Remove(collision.gameObject.GetComponent<Enemy>());
     }
 
-
-
+    public void Ignore(Enemy target)
+    {
+        EnemyList.Remove(target);
+    }
+    public void Recall(Enemy target)
+    {
+        EnemyList.Add(target);
+    }
 
     // Start is called before the first frame update
     void Start()
