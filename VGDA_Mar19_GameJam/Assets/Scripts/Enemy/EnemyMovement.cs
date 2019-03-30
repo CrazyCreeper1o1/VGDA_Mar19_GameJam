@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
         float angle = MathExtra.Vector2ToDiamondAngle(transform.position.y - target.position.y, transform.position.x - target.position.x);
 
         Vector2 movement = MathExtra.DiamondAngleToVector2(angle);
-
+        
         Move(-movement.x * speed, -movement.y * speed);
     }
 
