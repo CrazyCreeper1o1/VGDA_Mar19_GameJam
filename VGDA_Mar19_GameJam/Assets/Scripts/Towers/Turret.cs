@@ -38,6 +38,10 @@ public class Turret : Tower
                         //Debug.Log("HIT THE BOY.");
                         hit.rigidbody.gameObject.GetComponent<Enemy>().TakeDamage(damage);
                         shotTimer = 0;
+                        Transform barrel = gameObject.GetComponentInChildren<Transform>();
+                        //barrel.transform.rotation.z = (Mathf.Atan2(target.transform.position.y - gameObject.GetComponent<Transform>().position.y, target.transform.position.x - gameObject.GetComponent<Transform>().position.x));
+                        barrel.transform.Rotate(0, 0, -barrel.transform.rotation.z, Space.Self);
+                        barrel.transform.Rotate(0, 0, (Mathf.Atan2(target.transform.position.y - gameObject.GetComponent<Transform>().position.y, target.transform.position.x - gameObject.GetComponent<Transform>().position.x)), Space.Self);
                     }
                     else
                     {
