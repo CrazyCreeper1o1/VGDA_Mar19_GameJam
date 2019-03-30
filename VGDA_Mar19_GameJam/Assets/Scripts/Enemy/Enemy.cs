@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
 
     public int hp;
+    public int threat;
     
     // Start is called before the first frame update
     void Start()
