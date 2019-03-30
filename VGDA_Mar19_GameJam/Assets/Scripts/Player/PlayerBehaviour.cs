@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -59,7 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        if (!flinchInvincibility)
+        if (!flinchInvincibility && currentState != States.dying)
         {
             HP -= dmg;
             if (HP <= 0)
@@ -69,11 +70,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Die()
     {
-        int time = 10000;
-        while (time > 0)
-        {
-            time--;
-            transform.localScale -= new Vector3(0, 0.00001f, 0);
-        }
+        if (transform.localScale.y > 0)
+            transform.localScale -= new Vector3(0, 0.1f, 0);
+        else
+            SceneManager.LoadScene("GameOver");
     }
 }
